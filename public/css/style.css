@@ -1,0 +1,319 @@
+/* Root */
+:root {
+  --divcolor: #d9826c;
+}
+
+/* ==========================================  */
+/* Semantic elements */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================  */
+
+/*  Header Classes  */
+.sticky-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--divcolor);
+  width: 100%;
+  height: 8vh;
+  margin: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.btn-logo {
+  background: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.travel-logo {
+  width: 8rem;
+  margin-left: 8rem;
+}
+
+.header-button-div {
+  display: flex;
+  margin-right: 8rem;
+}
+
+.nav-tag {
+  background: none;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  outline: inherit;
+  padding: 0.5rem;
+  font-size: larger;
+  font-weight: 500;
+}
+
+.input-box {
+  width: 300px;
+  height: 3rem;
+}
+
+/*  Main Classes  */
+.img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.background-img {
+  background-image: url(/public/img/globe.jpeg);
+  filter: brightness(1.2);
+  width: 100%;
+  height: 55vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom;
+}
+
+.img-text {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15rem;
+}
+
+.div-text-img {
+  display: flex;
+  justify-content: center;
+}
+
+.colored-forum {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--divcolor);
+  width: auto;
+  height: 15vh;
+}
+
+.form-text {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+}
+
+.form-imput-text {
+  display: flex;
+}
+
+.instruction-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.text-div {
+  display: flex;
+  justify-content: center;
+}
+
+.ins-header {
+  color: black;
+  font-size: 40px;
+}
+
+.ins-p {
+  color: black;
+  font-size: 25px;
+  /* margin: 1rem; */
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.input {
+  width: 65%;
+}
+
+.country-div {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+}
+
+.dis-colmun {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.country-flag {
+  padding: 1rem;
+  margin: 3rem;
+  border: 1px solid black;
+  width: 350px;
+  height: 255px;
+}
+
+/* Classes from JS */
+
+.new-country-info {
+  display: flex;
+  justify-content: center;
+}
+
+.new-country-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.div-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 
+    .google-maps {
+        height: 350px;
+        width: 280px;
+    } */
+/* ==========================================  */
+
+/* ID */
+
+/* ==========================================  */
+
+/* media for responsive screens */
+/* Width */
+
+@media screen and (max-width: 1070px) {
+  .country-div,
+  .colored-forum {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .div-map {
+    padding: 1rem;
+  }
+  .img-text {
+    margin-right: 5rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .form-imput-text {
+    flex-direction: column;
+  }
+  .input-box {
+    width: 300px;
+    height: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .travel-logo {
+    margin: 0;
+  }
+  .img-text {
+    width: 12rem;
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .travel-logo {
+    margin: 0;
+  }
+  .img-text {
+    margin-right: 0;
+  }
+  .input-box {
+    width: 230px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .country-flag {
+    width: 250px;
+    height: 150px;
+  }
+
+  .media-flag {
+    width: 200px;
+    height: 115px;
+  }
+}
+/* ==========================================  */
+
+/* height */
+@media screen and (max-height: 1150px) {
+  .sticky-header {
+    height: 10vh;
+  }
+  .colored-forum {
+    height: 20vh;
+  }
+}
+
+@media screen and (max-height: 870px) {
+  .colored-forum {
+    height: 23vh;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .travel-logo {
+    width: 5rem;
+  }
+  .input-box {
+    height: 1.5rem;
+  }
+}
+
+/* both width and height */
+
+@media screen and (max-height: 600px) and (max-width: 800px) {
+  .input-box {
+    height: 1.5rem;
+  }
+}
+/* ==========================================  */
