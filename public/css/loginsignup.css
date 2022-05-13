@@ -1,0 +1,28 @@
+
+
+.card{
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+
+.center-page{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.div-padding-buttons{
+    padding: .3rem;
+}
+
+.benefits-text{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 3rem;
+}

@@ -1,49 +1,31 @@
 <section class="center-page">
-  <div class="box login-center-box">
+      <div>
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <h3 class="card-title">Log In:</h3>
+            <label for="uname"><b>Username</b></label>
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              placeholder="Enter Username"
+              name="uname"
+              required
+            />
 
-    <div class="login-and-Signup">
-      {{!-- login --}}
-      <div class="login-card">
-        <h2 class="page-title">Login</h2>
-        <form class="form login-form">
-          <div class="form-group">
-            <label for="email-login">Email:</label>
-            <input class="form-input" type="text" id="email-login" />
+            <label for="psw"><b>Password</b></label>
+            <input
+              class="form-control form-control-lg"
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            />
+            <button type="submit">Login</button>
+            <div class="div-padding-buttons"></div>
+            <a href="/signup"><button type="sign-up">Sign Up Instead</button></a>
           </div>
-          <div class="form-group">
-            <label for="password-login">Password:</label>
-            <input class="form-input" type="password" id="password-login" />
-          </div>
-          <div class="form-group-btn">
-            <button class="button is-dark" type="submit">login</button>
-          </div>
-        </form>
+        </div>
       </div>
+    </section>
 
-      <div class="login-card">
-        <h2 class="page-title">Signup</h2>
-        <form class="form signup-form">
-          <div class="form-group">
-            <label for="username-signup">Username:</label>
-            <input class="form-input" type="text" id="username-signup" />
-          </div>
-          <div class="form-group">
-            <label for="email-signup">Email:</label>
-            <input class="form-input" type="text" id="email-signup" />
-          </div>
-          <div class="form-group">
-            <label for="password-signup">Password:</label>
-            <input class="form-input" type="password" id="password-signup" />
-          </div>
-          <div class="form-group-btn">
-            <button class="button is-primary" type="submit">signup</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <script src="./js/login.js"></script>
-
-
-</section>
+<script src="./js/login.js"></script>
