@@ -4,6 +4,7 @@ var submitBtn = document.getElementById("Submit-btn");
 
 let countryImg = document.getElementById('country-img');
 
+// Country search
 function countrySearch(event) {
     event.preventDefault();
 
