@@ -15,14 +15,34 @@ Country.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    capital: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    region: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    subregion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    languages: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    borders: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    currencies: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     country_img: {
       //this will be a URL 
       type: DataTypes.STRING,
       allowNull: false
-    },
-    review_ratings: {
-        type: DataTypes.INTEGER,
-        allowNull: false
     },
   },
   {
