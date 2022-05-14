@@ -2,7 +2,7 @@ var countryInfo = [];
 
 var submitBtn = document.getElementById("Submit-btn");
 var inputArea = document.getElementById("Search-box");
-let countryImg = document.getElementById('country-img')
+let countryImg = document.getElementById('country-img');
 
 // Function to fetch data from Country API
 function fetchApiData() {

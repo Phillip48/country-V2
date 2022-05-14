@@ -1,51 +1,49 @@
 const router = require('express').Router();
 const axios = require('axios');
-const { Movie, Review, User } = require('../models');
+const { Country, Review, User } = require('../models');
 
-// uses '/search' endpoint
+//'/search' endpoint for user serach
 
-router.get('/:movieTitle', (req, res) => {
-    let apiUrl = `https://www.omdbapi.com/?apikey=1d2b52b9&t=${req.params.movieTitle}`
+router.get('/:countryTitle', (req, res) => {
+    let apiUrl = `https://restcountries.com/v3.1/name/${req.params.countryTitle}?fullText=true`
     axios.get(apiUrl)
-        .then(function (response) {
-            let singleMovie = {
-                movie_title: response.data.Title,
-                imdbId: response.data.imdbID,
-                movie_poster: response.data.Poster,
-                director: response.data.Director,
-                runtime: response.data.Runtime,
-                movie_rating: response.data.Rated,
-                releaseDate: response.data.Released,
-                actors: response.data.Actors,
-                plot: response.data.Plot,
-                review_ratings: response.data.imdbRating,
+        .then((response) => {
+            let userCountrySearch = {
+                countryTitle: response.data.name.common,
+                countryCapital: response.data.capital,
+                countryRegion: response.data.region,
+                countrySubregion: response.data.subregion,
+                countryLanguages: response.data.languages,
+                countryBorders: response.data.borders,
+                currencies: response.data.currencies.this.name,
+                flag: response.data.flags.png,
             }
 
-            movieCheck(singleMovie);
+            countryFind(userCountrySearch);
         });
 
-    async function movieCheck(singleMovie) {
-        console.log('looking for db entry')
+    async function countryFind(userCountrySearch) {
+        console.log('Looking for db entry')
         try {
-            const movieData = await Movie.findOne({
-                where: { movie_title: singleMovie.movie_title },
+            const data = await Country.findOne({
+                where: { country_title: userCountrySearch.countryTitle },
                 include: [{ model: Review, include: [{ model: User }, { model: User }] }]
             })
 
-            if (movieData) {
-                const userStuff = movieData.get({ plain: true })
-                const movieId = movieData.id
-                const reviews = userStuff.reviews
+            if (data) {
+                const userInfo = data.get({ plain: true })
+                const countryID = data.id
+                const reviews = userInfo.reviews
                 const userId = req.session.userId
                 console.log('found entry')
-                res.render('singleMovie', { singleMovie, userId, movieId, reviews, loggedIn:req.session.loggedIn });
+                res.render('', { userCountrySearch, userId, countryID, reviews, loggedIn:req.session.loggedIn });
             } else {
                 console.log('no entry found')
-                const createdMovie = await Movie.create(singleMovie)
+                const createdMovie = await Country.create(userCountrySearch)
                 const userId = req.session.userId
-                const movieId = createdMovie.id
+                const countryID = createdMovie.id
                 const reviews = createdMovie.reviews
-                res.render('singleMovie', { singleMovie, userId, movieId, reviews, loggedIn:req.session.loggedIn });
+                res.render('', { userCountrySearch, userId, countryID, reviews, loggedIn:req.session.loggedIn });
             }
         } catch (err) {
             res.render('404')
