@@ -1,8 +1,11 @@
-const User = require('./User');
-const Country = require('./Country');
+const User = require('./Review');
 const Review = require('./Review');
 const FollowedUser = require('./FollowedUser');
+const Country = require('./Country');
+const UserCountry = require('./UserCountry');
 
+
+// 
 Review.belongsTo(User, {
     foreignKey: 'user_id',
 });
@@ -19,24 +22,6 @@ Country.hasMany(Review, {
     foreignKey: 'country_id',
 });
 
-//================= Example =================//
-// // For to watch movies
-
-// Movie.belongsToMany(User, {
-//     through: {
-//         model: UserMovie,
-//         unique: false
-//     }
-// });
-
-// User.belongsToMany(Movie, {
-//     through: {
-//         model: UserMovie,
-//         unique: false
-//     }
-// });
-
-//================= Example =================//
 // For Followed Users
 User.belongsToMany(User, {
     as: "follower",
@@ -50,5 +35,19 @@ User.belongsToMany(User, {
     through: FollowedUser
 });
 
+// Countries to visit
+Country.belongsToMany(User, {
+    through: {
+        model: UserCountry,
+        unique: false
+    }
+});
 
-// module.exports = { User, Movie, Review, UserMovie, FollowedUser };
+User.belongsToMany(Country, {
+    through: {
+        model: UserCountry,
+        unique: false
+    }
+});
+
+module.exports = { User, Country, Review, FollowedUser, UserCountry };
