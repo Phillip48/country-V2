@@ -36,7 +36,7 @@ Country.init(
       allowNull: false
     },
     currencies: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     country_img: {

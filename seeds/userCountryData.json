@@ -1,0 +1,27 @@
+[
+  {
+    "user_id": "1",
+    "countryData": "2",
+    "has_visited": false
+  },
+  {
+    "user_id": "2",
+    "countryData": "4",
+    "has_visited": true
+  },
+  {
+    "user_id": "3",
+    "countryData": "3",
+    "has_visited": true
+  },
+  {
+    "user_id": "4",
+    "countryData": "3",
+    "has_visited": false
+  },
+  {
+    "user_id": "2",
+    "countryData": "2",
+    "has_visited": true
+  }
+]

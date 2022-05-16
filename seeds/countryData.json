@@ -1,0 +1,12 @@
+[
+  {
+    "country_title": "Testtesting",
+    "capital": "TesttestingCap",
+    "region": "TesttestingReg",
+    "subregion": "TesttestingSubReg",
+    "languages": "TesttestingLan",
+    "borders": "TesttestingBor",
+    "currencies": "TesttestingCur",
+    "country_img": "TesttestingiMG"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie ac feugiat sed lectus.",
+    "review_likes": 4,
+    "user_id": "2",
+    "country_id": "4"
+  },
+  {
+    "content": "Quorem mollis aliquam ut porttitor leo a diam sollicitudin. Volutpat maecenas volutpat blandit aliquam etiam erat.",
+    "review_likes": 0,
+    "user_id": "1",
+    "country_id": "1"
+  },
+  {
+    "content": "Euismod nisi porta lorem mollis aliquam ut. Sed viverra ipsum nunc aliquet bibendum enim facilisis.",
+    "review_likes": 1,
+    "user_id": "5",
+    "country_id": "3"
+  },
+  {
+    "content": "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie ac feugiat sed lectus.",
+    "review_likes": 2,
+    "user_id": "4",
+    "country_id": "1"
+  },
+  {
+    "content": "Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie ac feugiat sed lectus.",
+    "review_likes": 0,
+    "user_id": "2",
+    "country_id": "3"
+  }
+]

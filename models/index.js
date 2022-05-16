@@ -1,4 +1,4 @@
-const User = require('./Review');
+const User = require('./User');
 const Review = require('./Review');
 const FollowedUser = require('./FollowedUser');
 const Country = require('./Country');

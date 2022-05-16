@@ -21,14 +21,14 @@ UserCountry.init(
         key: 'id',
       }
     },
-    movie_id: {
+    country_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'country',
         key: 'id',
       }
     },
-    has_watched: {
+    has_visited: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
       default: false
