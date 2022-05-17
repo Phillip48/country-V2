@@ -31,8 +31,12 @@
         <a href="/" class="nav-tag">About Us</a>
         <a href="/" class="nav-tag">News</a>
         <a href="/" class="nav-tag">Resources</a>
-        <a href="/" class="nav-tag">Sign Up</a>
-        <a href="/" class="nav-tag">Login</a>
+        {{#if loggedIn}}
+        <a href="/login" id="logout" class="nav-tag">LogOut</a>
+        {{else}}
+        <a href="/signup" class="nav-tag">Sign Up</a>
+        <a href="/login" class="nav-tag">Login</a>
+        {{/if}}
       </nav>
     </div>
   </header>
