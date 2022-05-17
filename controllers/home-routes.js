@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const session = require('express-session');
-const { User, Movie, Review } = require('../models');
+const { User, Country, Review } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -33,7 +33,7 @@ router.get('/username/:username', async (req, res) => {
   try {
     const userData = await User.findOne({
       where: { username: req.params.username },
-      include: [{ model: Review, include: [{ model: Movie }, { model: User }] }, { model: Movie }, { model: User, as: 'followee' }]
+      include: [{ model: Review, include: [{ model: Country }, { model: User }] }, { model: Country }, { model: User, as: 'followee' }]
     });
     let differentUser = false
     const dashboard = userData.get({ plain: true });
