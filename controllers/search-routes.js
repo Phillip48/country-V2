@@ -47,7 +47,7 @@ router.get('/:countryTitle', (req, res) => {
                 const reviews = userInfo.reviews
                 const userId = req.session.userId
                 console.log('found entry')
-                res.render('', { userCountrySearch, userId, countryID, reviews, loggedIn:req.session.loggedIn });
+                res.render('homepage', { userCountrySearch, userId, countryID, reviews, loggedIn:req.session.loggedIn });
             } else {
                 // If there is no data of this country in the database then it will take the data from the API and create it to the database
                 console.log('no entry found')
@@ -55,7 +55,7 @@ router.get('/:countryTitle', (req, res) => {
                 const userId = req.session.userId
                 const countryID = createdMovie.id
                 const reviews = createdMovie.reviews
-                res.render('', { userCountrySearch, userId, countryID, reviews, loggedIn:req.session.loggedIn });
+                res.render('homepage', { userCountrySearch, userId, countryID, reviews, loggedIn:req.session.loggedIn });
             }
             // If not a valid country or something goes wrong then it will send you to the 404 page
         } catch (err) {
