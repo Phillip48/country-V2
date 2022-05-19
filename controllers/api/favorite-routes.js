@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { UserMovie, Movie } = require('../../models');
+const { UserCountry, Country } = require('../../models');
 
 // The `/api/follow` endpoint
 
@@ -7,17 +7,17 @@ router.post('/', async (req, res) => {
     try {
         console.log('finding movie')
         console.log(req.body.favoriteMovieReform)
-        const movieData = await Movie.findOne({
+        const countryData = await Movie.findOne({
             where: { movie_title: req.body.favoriteMovieReform }
         })
-        console.log(movieData)
+        console.log(countryData)
         let favoriteObject = {
             user_id: req.session.userId,
-            movie_id: movieData.id,
-            has_watched: false
+            country_id: countryData.id,
+            has_visited: false
         }
         console.log(favoriteObject)
-        const followData = await UserMovie.create(favoriteObject);
+        const followData = await UserCountry.create(favoriteObject);
         res.status(200).json(followData);
     } catch (err) {
         res.status(500).json(err);

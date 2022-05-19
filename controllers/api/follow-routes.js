@@ -5,7 +5,7 @@ const { FollowedUser, User } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        console.log('finding user')
+        console.log('Finding user')
         const followeeData = await User.findOne({
             where: { username: req.body.followeeUsername }
         })

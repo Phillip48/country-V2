@@ -1,59 +1,59 @@
 const router = require('express').Router();
-const { Review, User, Movie } = require('../../models');
+const { Review, User, Country } = require('../../models');
 
 // The `/api/reviews` endpoint
 
 // get all reviews
 router.get('/', async (req, res) => {
     try {
-        const movieData = await Review.findAll({
-            include: [{ model: User, attributes: ['username'] }, { model: Movie, attributes: ['movie_title'] }]
+        const countryData = await Review.findAll({
+            include: [{ model: User, attributes: ['username'] }, { model: Country, attributes: ['country_title'] }]
         });
-        res.status(200).json(movieData);
+        res.status(200).json(countryData);
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-// get one movie
+// get one country
 router.get('/:id', async (req, res) => {
     try {
-        const movieData = await Review.findByPk(req.params.id, {
-            include: [{ model: User, attributes: ['username'] }, { model: Movie, attributes: ['movie_title'] }]
+        const countryData = await Review.findByPk(req.params.id, {
+            include: [{ model: User, attributes: ['username'] }, { model: Country, attributes: ['country_title'] }]
         });
 
-        if (!movieData) {
+        if (!countryData) {
             res.status(404).json({ message: 'No review found with this id!' });
             return;
         }
 
-        res.status(200).json(movieData);
+        res.status(200).json(countryData);
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-// Post movie to db
+// Post country to db
 router.post('/', async (req, res) => {
     try {
-        const movieData = await Review.create(req.body);
+        const countryData = await Review.create(req.body);
 
-        res.status(200).json(movieData);
+        res.status(200).json(countryData);
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
 
-// Updates movie based on its id
+// Updates country based on its id
 router.put('/:id', async (req, res) => {
     try {
-        const movieData = await Review.update(
+        const countryData = await Review.update(
             {
                 content: req.body.content,
                 review_likes: req.body.review_likes,
                 user_id: req.body.user_id,
-                movie_id: req.body.movie_id
+                country_id: req.body.country_id
             },
             {
                 where: {
@@ -62,32 +62,32 @@ router.put('/:id', async (req, res) => {
             }
         );
 
-        if (!movieData) {
+        if (!countryData) {
             res.status(404).json({ message: 'No review found with this id!' });
             return;
         }
 
-        res.status(200).json(movieData);
+        res.status(200).json(countryData);
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-// Delete movie from db by ID
+// Delete country from db by ID
 router.delete('/:id', async (req, res) => {
     try {
-        const movieData = await Review.destroy({
+        const countryData = await Review.destroy({
             where: {
                 id: req.params.id,
             },
         });
 
-        if (!movieData) {
+        if (!countryData) {
             res.status(404).json({ message: 'No review found with this id!' });
             return;
         }
 
-        res.status(200).json(movieData);
+        res.status(200).json(countryData);
     } catch (err) {
         res.status(500).json(err);
     }

@@ -7,7 +7,7 @@ const followRoutes = require('./follow-routes');
 const favoriteRoutes = require('./favorite-routes');
 
 router.use('/users', userRoutes);
-router.use('/movies', countryRoutes);
+router.use('/country', countryRoutes);
 router.use('/reviews', reviewRoutes);
 router.use('/follow', followRoutes);
 router.use('/favorite', favoriteRoutes);
