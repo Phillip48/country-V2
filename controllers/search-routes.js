@@ -8,20 +8,24 @@ const { Country, Review, User } = require('../models');
 // Router to get the movie search
 router.get('/:countryTitle', (req, res) => {
     let apiUrl = `https://restcountries.com/v3.1/name/${req.params.countryTitle}?fullText=true`
+    // console.log("URL", apiUrl);
+
     // Backend or server side search
     axios.get(apiUrl)
-        .then((response) => {
+        .then((res) => {
+            console.log('Response....', res.data[0].currencies);
+            // console.log('Response....', res.data[0].flags.png);
             // Returns the data from the api in an object with the info i need with a callback variable 
             let userCountrySearch = {
                 // Matches the columns in the db
-                country_title: response.data.name.common,
-                capital: response.data.capital,
-                region: response.data.region,
-                subregion: response.data.subregion,
-                languages: response.data.languages,
-                borders: response.data.borders,
-                currencies: response.data.currencies.this.name,
-                country_img: response.data.flags.png,
+                country_title: res.data[0].name.common,
+                capital: res.data[0].capital,
+                region: res.data[0].region,
+                subregion: res.data[0].subregion,
+                languages: res.data[0].languages,
+                borders: res.data[0].borders,
+                currencies: res.data[0].currencies.this.name,
+                country_img: res.data[0].flags.png,
             }
 
             // Calls the function to see if this country is already in the database
