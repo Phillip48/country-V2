@@ -28,7 +28,7 @@ Create a Full Stack Web Application with the following features:
 - [x] Protected API keys in Node with environment variables
 - [x] Polished front end/UI
 - [x] Meet good-quality coding standards (indentation, scoping, naming, etc.)
-- [] Deployed using Heroku (with data)
+- [x] Deployed using Heroku (with data)
 
 ## The development process
 
