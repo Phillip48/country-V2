@@ -10,7 +10,7 @@
 -[Contributors](#Contributors)  
 
 ## Description  
-Who doesn't wanna travel the world? Taking my personal P1 project and redoing it with what I learned in P2.  . It works by using REST Countries API and the Google Maps API. This app allows you to see where a country is located and some information about the country.   
+Who doesn't wanna travel the world? Taking my personal P1 project and redoing it with what I learned in P2.  . It works by using REST Countries API and the Google Maps API. This app allows you to see where a country is located and some information about the country. Not to mention follow other users and review the countries youve visited... and of course have a favorites list.   
 [Version 1 live link](https://phillip48.github.io/Country-API/)  
 [Version 2 live link]()   
 
@@ -20,7 +20,6 @@ Create a Full Stack Web Application with the following features:
 
 - [x] Use a Node and Express web server
 - [x] Backed by a MySQL database with a Sequelize ORM
-- [x] Use an existing public dataset to power the database (OMDB)
 - [x] Migration strategy using seeds and schema files
 - [x] Routes for retrieving and adding new data
 - [x] Incorporate authentication (BCrypt)
@@ -35,24 +34,19 @@ Create a Full Stack Web Application with the following features:
 
 In order to accomplish the challenge, the following steps were done:
 
-1. Brain storming to define the project main concept.
-2. External datasets research.
-3. Define the purpose, and concept of the application.
-4. Define the team members roles.
-5. Define MVPs (Minimum Viable Products) and due dates.
-6. Create sketches.
-7. Define the routes, requests and responses structure.
-8. Front end and back end coding.
-9. Integrate full stack application.
-10. Final review and proper documentation.
-
+* Research on the different API's used.
+* Define the purpose, and concept of the application before starting to code.
+* Work through what needed to be done first.
+* Create sketches for each web page.
+* Define the routes, requests and responses structure.
+* Integrate a full stack application.
 
 
 ## Usage
 
 **User Story**
 
-As the user I...  
+As the user I...  want to be able to see different information about other countries. I also want to be able to write reviews about the countries and see what other people have also said. I should be able to follow other users and save countries to my favorites list.
   
 ## Images  
 ![Img 1]()  
@@ -69,7 +63,7 @@ To install the project follow these steps:
 
 2. From the root folder, install the dependencies with:
 
-   - npm install
+   - npm i
 
 3. Run the app with:
    - node server.js 
