@@ -13,28 +13,58 @@ router.get('/:countryTitle', (req, res) => {
     // Backend or server side search
     axios.get(apiUrl)
         .then((res) => {
-            // console.log('Response....', res.data[0].currencies);
-            // console.log(JSON.stringify(res.data[0].currencies));
+
+            //================================== To get the currencies ==================================//
             testCountryCurrencyString = JSON.stringify(res.data[0].currencies)
             testCountryCurrencySliced = testCountryCurrencyString.slice(7, -1);
-            // console.log(testCountryCurrencySliced);
             testCountryCurrencySlicedParsed = JSON.parse(testCountryCurrencySliced)
-            // console.log(testCountryCurrencySlicedParsed);
+            
+            //========================================================================================//
+            //================================== To get the capital(DONE) ==================================//
+            countryCapArray = res.data[0].capital;
+            const countryCap = Object.assign({}, countryCapArray)
+            console.log('Looking for string...', countryCap)
 
-            // console.log('Response....', res.data[0].flags.png);
+            //========================================================================================//
+            //================================== To get the languages(Not working) ==================================//
+            countryLanArray = res.data[0].languages;
+            const countryLan = Object.assign({}, countryLanArray)
+            // console.log('Looking for languages in obj...', countryLan)
+            // console.log('Looking for...', res.data[0].languages)
+            //========================================================================================//
+            //================================== To get the borders(Not working) ==================================//
+            countryBorArray = res.data[0].borders;
+            // const countryBor = Object.assign({}, countryBorArray)
+            console.log('Looking for borders in obj...', countryBorArray)
+            let countryBorString = countryBorArray.toString();
+            console.log('test...' ,countryBorString);
+            
+            
+            // function forEachArrayElement() {
+            //     let countryBorArray = res.data[0].borders;
+            //     countryBorArray.forEach(element => {
+            //         console.log(element);
+            //         return element;
+            //     });
+            //     // console.log('Function array:', element);
+            // }
+            
+            // console.log('Looking for...', res.data[0].borders)
+            //========================================================================================//
+
             // Returns the data from the api in an object with the info i need with a callback variable 
             let userCountrySearch = {
                 // Matches the columns in the db
                 country_title: res.data[0].name.common,
-                capital: res.data[0].capital,
+                capital: countryCap[0],
                 region: res.data[0].region,
                 subregion: res.data[0].subregion,
                 languages: res.data[0].languages,
-                borders: res.data[0].borders,
+                borders: countryBorString,
                 currencies: testCountryCurrencySlicedParsed.name,
                 country_img: res.data[0].flags.png,
             }
-            // console.log(userCountrySearch);
+            console.log('Object made:', userCountrySearch);
             countryFind(userCountrySearch);
         });
 
@@ -63,7 +93,6 @@ router.get('/:countryTitle', (req, res) => {
 
     // async function
     async function countryFind(userCountrySearch) {
-        console.log('Looking...')
         // console.log(userCountrySearch);
         try {
             // Trying to find a country by its title in the db
@@ -84,10 +113,10 @@ router.get('/:countryTitle', (req, res) => {
             } else {
                 // If there is no data of this country in the database then it will take the data from the API and create it to the database
                 console.log('no entry found')
-                const createdMovie = await Country.create(userCountrySearch)
+                const createdCountry = await Country.create(userCountrySearch)
                 const userId = req.session.userId
-                const countryID = createdMovie.id
-                const reviews = createdMovie.reviews
+                const countryID = createdCountry.id
+                const reviews = createdCountry.reviews
                 res.render('homepage', { userCountrySearch, userId, countryID, reviews, loggedIn: req.session.loggedIn });
             }
             // If not a valid country or something goes wrong then it will send you to the 404 page
