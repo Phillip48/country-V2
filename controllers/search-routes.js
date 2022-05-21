@@ -8,48 +8,45 @@ const { Country, Review, User } = require('../models');
 // Router to get the movie search
 router.get('/:countryTitle', (req, res) => {
     let apiUrl = `https://restcountries.com/v3.1/name/${req.params.countryTitle}?fullText=true`
-    // console.log("URL", apiUrl);
 
     // Backend or server side search
     axios.get(apiUrl)
         .then((res) => {
+            // console.log('All data coming back...', res.data);
 
-            //================================== To get the currencies ==================================//
+            //================================== To get the currencies(Crude but done) ==================================//
             testCountryCurrencyString = JSON.stringify(res.data[0].currencies)
             testCountryCurrencySliced = testCountryCurrencyString.slice(7, -1);
             testCountryCurrencySlicedParsed = JSON.parse(testCountryCurrencySliced)
-            
+            // console.log('Sliced array...', testCountryCurrencySlicedParsed)
             //========================================================================================//
             //================================== To get the capital(DONE) ==================================//
             countryCapArray = res.data[0].capital;
             const countryCap = Object.assign({}, countryCapArray)
-            console.log('Looking for string...', countryCap)
+            // console.log('Looking for string...', countryCap)
 
             //========================================================================================//
-            //================================== To get the languages(Not working) ==================================//
+            //================================== To get the languages(not done) ==================================//
             countryLanArray = res.data[0].languages;
-            const countryLan = Object.assign({}, countryLanArray)
+            console.log('Languages raw data...' ,countryLanArray);
+
+            const mapArray = [countryLanArray].map(({}) => ({}))
+            console.log('Languages after...', mapArray);
+
+
+            let countryLan = Object.assign({}, countryLanArray);
+            let countryLanStringify = JSON.stringify(countryLanArray);
+            // let countryLanStringifySlice = countryLanStringify.slice(0)
+            const countryLanString = countryLanStringify.toString();
+            // console.log('Languages after...', countryLan);
+
             // console.log('Looking for languages in obj...', countryLan)
             // console.log('Looking for...', res.data[0].languages)
             //========================================================================================//
-            //================================== To get the borders(Not working) ==================================//
+            //================================== To get the borders(Crude but done) ==================================//
             countryBorArray = res.data[0].borders;
-            // const countryBor = Object.assign({}, countryBorArray)
-            console.log('Looking for borders in obj...', countryBorArray)
             let countryBorString = countryBorArray.toString();
-            console.log('test...' ,countryBorString);
-            
-            
-            // function forEachArrayElement() {
-            //     let countryBorArray = res.data[0].borders;
-            //     countryBorArray.forEach(element => {
-            //         console.log(element);
-            //         return element;
-            //     });
-            //     // console.log('Function array:', element);
-            // }
-            
-            // console.log('Looking for...', res.data[0].borders)
+            // console.log('test...' ,countryBorString);
             //========================================================================================//
 
             // Returns the data from the api in an object with the info i need with a callback variable 
@@ -62,6 +59,7 @@ router.get('/:countryTitle', (req, res) => {
                 languages: res.data[0].languages,
                 borders: countryBorString,
                 currencies: testCountryCurrencySlicedParsed.name,
+                sideofroad: res.data[0].car.side,
                 country_img: res.data[0].flags.png,
             }
             console.log('Object made:', userCountrySearch);
