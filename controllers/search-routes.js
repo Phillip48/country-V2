@@ -30,14 +30,30 @@ router.get('/:countryTitle', (req, res) => {
             countryLanArray = res.data[0].languages;
             console.log('Languages raw data...' ,countryLanArray);
 
-            const mapArray = [countryLanArray].map(({}) => ({}))
-            console.log('Languages after...', mapArray);
+            // const mapArray = [countryLanArray].map(({}) => ({}))
+            // console.log('Languages after...', mapArray);
 
+            // PARSE 
+            // or
+            // stringify then split every word
+            // const languagesString = JSON.stringify(res.data[0].languages)
+            // const languagesStringSplit = languagesString.split(' ')
+            // console.log('Here are thew results for the split array...', languagesStringSplit);
 
-            let countryLan = Object.assign({}, countryLanArray);
-            let countryLanStringify = JSON.stringify(countryLanArray);
-            // let countryLanStringifySlice = countryLanStringify.slice(0)
-            const countryLanString = countryLanStringify.toString();
+            langaugesAfterArray = [];
+
+            for(var key in countryLanArray) {
+                var value = countryLanArray[key];
+                langaugesAfterArray.push(value)
+                console.log('Loop for languages...', value);
+            }
+            langaugesAfterArrayString = langaugesAfterArray.toString();
+            console.log('String with the languages...', langaugesAfterArrayString);
+
+            // let countryLan = Object.assign({}, countryLanArray);
+            // let countryLanStringify = JSON.stringify(countryLanArray);
+            // // let countryLanStringifySlice = countryLanStringify.slice(0)
+            // const countryLanString = countryLanStringify.toString();
             // console.log('Languages after...', countryLan);
 
             // console.log('Looking for languages in obj...', countryLan)
@@ -56,7 +72,7 @@ router.get('/:countryTitle', (req, res) => {
                 capital: countryCap[0],
                 region: res.data[0].region,
                 subregion: res.data[0].subregion,
-                languages: res.data[0].languages,
+                languages: langaugesAfterArrayString,
                 borders: countryBorString,
                 currencies: testCountryCurrencySlicedParsed.name,
                 sideofroad: res.data[0].car.side,
@@ -107,7 +123,7 @@ router.get('/:countryTitle', (req, res) => {
                 const reviews = userInfo.reviews
                 const userId = req.session.userId
                 console.log('found entry')
-                res.render('homepage', { userCountrySearch, });
+                res.render('homepage', { userCountrySearch, countryID, reviews, userId});
             } else {
                 // If there is no data of this country in the database then it will take the data from the API and create it to the database
                 console.log('no entry found')
