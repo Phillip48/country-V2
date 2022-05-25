@@ -26,38 +26,24 @@ router.get('/:countryTitle', (req, res) => {
             // console.log('Looking for string...', countryCap)
 
             //========================================================================================//
-            //================================== To get the languages(not done) ==================================//
+            //================================== To get the languages(Crude but done) ==================================//
             countryLanArray = res.data[0].languages;
             console.log('Languages raw data...' ,countryLanArray);
 
-            // const mapArray = [countryLanArray].map(({}) => ({}))
-            // console.log('Languages after...', mapArray);
-
-            // PARSE 
-            // or
-            // stringify then split every word
-            // const languagesString = JSON.stringify(res.data[0].languages)
-            // const languagesStringSplit = languagesString.split(' ')
-            // console.log('Here are thew results for the split array...', languagesStringSplit);
-
             langaugesAfterArray = [];
 
-            for(var key in countryLanArray) {
-                var value = countryLanArray[key];
+            // Or for each 
+            // used let instead of var
+            for(let key in countryLanArray) {
+                let value = countryLanArray[key];
                 langaugesAfterArray.push(value)
                 console.log('Loop for languages...', value);
             }
+
+
             langaugesAfterArrayString = langaugesAfterArray.toString();
             console.log('String with the languages...', langaugesAfterArrayString);
 
-            // let countryLan = Object.assign({}, countryLanArray);
-            // let countryLanStringify = JSON.stringify(countryLanArray);
-            // // let countryLanStringifySlice = countryLanStringify.slice(0)
-            // const countryLanString = countryLanStringify.toString();
-            // console.log('Languages after...', countryLan);
-
-            // console.log('Looking for languages in obj...', countryLan)
-            // console.log('Looking for...', res.data[0].languages)
             //========================================================================================//
             //================================== To get the borders(Crude but done) ==================================//
             countryBorArray = res.data[0].borders;
@@ -81,29 +67,6 @@ router.get('/:countryTitle', (req, res) => {
             console.log('Object made:', userCountrySearch);
             countryFind(userCountrySearch);
         });
-
-
-    // axios.get(apiUrl)
-    //     .then((res) => {
-    //         console.log('Response....', res.data[0].currencies);
-    //         // console.log('Response....', res.data[0].flags.png);
-    //         // Returns the data from the api in an object with the info i need with a callback variable 
-    //         let userCountrySearch = {
-    //             // Matches the columns in the db
-    //             country_title: res.data[0].name.common,
-    //             capital: res.data[0].capital,
-    //             region: res.data[0].region,
-    //             subregion: res.data[0].subregion,
-    //             languages: res.data[0].languages,
-    //             borders: res.data[0].borders,
-    //             currencies: res.data[0].currencies.this.name,
-    //             country_img: res.data[0].flags.png,
-    //         }
-
-    //         // Calls the function to see if this country is already in the database
-    //         // Passes in the country as a parameter
-    //         countryFind(userCountrySearch);
-    //     });
 
     // async function
     async function countryFind(userCountrySearch) {
