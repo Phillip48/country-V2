@@ -74,6 +74,7 @@ router.get('/:countryTitle', (req, res) => {
     // async function
     async function countryFind(userCountrySearch) {
         // Google maps 
+        const googlemapsLink = `https://www.google.com/maps/embed/v1/place?key=AIzaSyB4ei3CuVhlWhedmkq1KWjebDbfLid1j3w&q=${req.params.countryTitle}`;
         const googleMapsBox =
             `<div class= "google-maps">
                 <iframe
@@ -104,7 +105,8 @@ router.get('/:countryTitle', (req, res) => {
                 const reviews = userInfo.reviews
                 const userId = req.session.userId
                 console.log('found entry')
-                res.render('homepage', { userCountrySearch, countryID, reviews, userId, googleMapsBox});
+                //  took out googleMapsBox from this render
+                res.render('homepage', { userCountrySearch, countryID, reviews, userId, googlemapsLink});
             } else {
                 // If there is no data of this country in the database then it will take the data from the API and create it to the database
                 console.log('no entry found')
