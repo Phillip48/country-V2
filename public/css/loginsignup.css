@@ -1,28 +1,43 @@
-
-
-.card{
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
-}
-
-.center-page{
+.background-world {
     display: flex;
-    /* align-items: center; */
     justify-content: center;
-    margin-top: 5rem;
+    align-items: center;
+  background-image: url(../img/world\ bg.webp);
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  width: 100%;
 }
 
-.card-body{
-    display: flex;
-    flex-direction: column;
+.margintop {
+  margin-top: 0.5rem;
 }
 
-.div-padding-buttons{
-    padding: .3rem;
+.card {
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
 }
 
-.benefits-text{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    padding: 3rem;
+.center-page {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  /* margin-top: 5rem; */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.div-padding-buttons {
+  padding: 0.3rem;
+}
+
+.benefits-text {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 3rem;
 }
