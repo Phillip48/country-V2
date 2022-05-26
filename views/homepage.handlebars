@@ -44,14 +44,16 @@
     <div class="dis-colmun" id="country-flag">
       <h3>Country Flag:</h3>
       <div class="country-flag" id="country-flag-div">
-        {{userCountrySearch.country_img}}
+        <img src="{{userCountrySearch.country_img}}" alt="Flag img">
       </div>
     </div>
 
     <div>
       <div class="div-map">
         <h3>Google maps:</h3>
-        <div id="maps-display"></div>
+        <div id="maps-display">
+          {{googleMapsBox}}
+        </div>
       </div>
     </div>
 

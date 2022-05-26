@@ -3,10 +3,13 @@ const router = require('express').Router();
 const axios = require('axios');
 const { Country, Review, User } = require('../models');
 
-//'/search' endpoint for user search
 
+//'/search' endpoint for user search
 // Router to get the movie search
 router.get('/:countryTitle', (req, res) => {
+
+
+    const googleMaps = `https://www.google.com/maps/embed/v1/place?key=AIzaSyB4ei3CuVhlWhedmkq1KWjebDbfLid1j3w&q=${req.params.countryTitle}`;
     let apiUrl = `https://restcountries.com/v3.1/name/${req.params.countryTitle}?fullText=true`
 
     // Backend or server side search
@@ -28,21 +31,21 @@ router.get('/:countryTitle', (req, res) => {
             //========================================================================================//
             //================================== To get the languages(Crude but done) ==================================//
             countryLanArray = res.data[0].languages;
-            console.log('Languages raw data...' ,countryLanArray);
+            // console.log('Languages raw data...' ,countryLanArray);
 
             langaugesAfterArray = [];
 
             // Or for each 
             // used let instead of var
-            for(let key in countryLanArray) {
+            for (let key in countryLanArray) {
                 let value = countryLanArray[key];
                 langaugesAfterArray.push(value)
-                console.log('Loop for languages...', value);
+                // console.log('Loop for languages...', value);
             }
 
 
             langaugesAfterArrayString = langaugesAfterArray.toString();
-            console.log('String with the languages...', langaugesAfterArrayString);
+            // console.log('String with the languages...', langaugesAfterArrayString);
 
             //========================================================================================//
             //================================== To get the borders(Crude but done) ==================================//
@@ -64,13 +67,27 @@ router.get('/:countryTitle', (req, res) => {
                 sideofroad: res.data[0].car.side,
                 country_img: res.data[0].flags.png,
             }
-            console.log('Object made:', userCountrySearch);
+            //  console.log('Object made:', userCountrySearch);
             countryFind(userCountrySearch);
         });
 
     // async function
     async function countryFind(userCountrySearch) {
-        // console.log(userCountrySearch);
+        // Google maps 
+        const googleMapsBox =
+            `<div class= "google-maps">
+                <iframe
+                width="280"
+                height="300"
+                style="border: 1px solid black;"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB4ei3CuVhlWhedmkq1KWjebDbfLid1j3w
+                &q=${req.params.countryTitle}">
+                </iframe>
+            </div>`;
+
         try {
             // Trying to find a country by its title in the db
             const data = await Country.findOne({
@@ -80,13 +97,14 @@ router.get('/:countryTitle', (req, res) => {
 
             // If data is returned from the database then it will get the data
             if (data) {
+
                 console.log('Looking for data:', data);
                 const userInfo = data.get({ plain: true })
                 const countryID = data.id
                 const reviews = userInfo.reviews
                 const userId = req.session.userId
                 console.log('found entry')
-                res.render('homepage', { userCountrySearch, countryID, reviews, userId});
+                res.render('homepage', { userCountrySearch, countryID, reviews, userId, googleMapsBox});
             } else {
                 // If there is no data of this country in the database then it will take the data from the API and create it to the database
                 console.log('no entry found')
