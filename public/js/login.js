@@ -1,3 +1,5 @@
+const { redirect } = require("express/lib/response");
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -41,6 +43,10 @@ const signupFormHandler = async (event) => {
   }
 };
 
+// const redirectMe = () => {
+//   document.location.replace('/signup');
+// }
+
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
@@ -48,3 +54,7 @@ document
 document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
+
+// document
+//   .querySelector('#signup-btn-redirect')
+//   .addEventListener('sign-up', redirectMe)
