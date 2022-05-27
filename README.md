@@ -1,4 +1,4 @@
-# country-V2  
+# Travelers Guide V2  
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)  
   
 ## Table of contents   
