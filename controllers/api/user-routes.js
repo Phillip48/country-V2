@@ -20,10 +20,11 @@ router.post('/', async (req, res) => {
       req.session.loggedIn = true;
       req.session.user = newUserData.dataValues.username;
       req.session.userId = newUserData.dataValues.id;
-      
+
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
+        
     });
   } catch (err) {
     console.log('Something went wrong: ', err);

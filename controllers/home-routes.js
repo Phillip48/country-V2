@@ -6,7 +6,7 @@ const withAuth = require('../utils/auth');
 
 // add the withAuth when we have it properly set up
 
-router.get('/', async (req, res) => {
+router.get('/userProfile', async (req, res) => {
   console.log("hello")
   try {
 
@@ -16,6 +16,14 @@ router.get('/', async (req, res) => {
     }
     res.render('homepage', { loggedIn: req.session.loggedIn });
 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/homepage', async (req, res) => {
+  try {
+    res.render('homepage', { loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }

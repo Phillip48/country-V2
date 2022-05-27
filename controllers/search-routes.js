@@ -1,6 +1,7 @@
 // Everything required
 const router = require('express').Router();
 const axios = require('axios');
+
 const { Country, Review, User } = require('../models');
 
 
@@ -11,7 +12,7 @@ router.get('/:countryTitle', (req, res) => {
 
     const googleMaps = `https://www.google.com/maps/embed/v1/place?key=AIzaSyB4ei3CuVhlWhedmkq1KWjebDbfLid1j3w&q=${req.params.countryTitle}`;
     let apiUrl = `https://restcountries.com/v3.1/name/${req.params.countryTitle}?fullText=true`
-
+    
     // Backend or server side search
     axios.get(apiUrl)
         .then((res) => {
