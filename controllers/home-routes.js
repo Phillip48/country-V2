@@ -21,7 +21,7 @@ router.get('/userProfile', async (req, res) => {
   }
 });
 
-router.get('/homepage', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     res.render('homepage', { loggedIn: req.session.loggedIn });
   } catch (err) {
