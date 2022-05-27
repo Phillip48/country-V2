@@ -28,19 +28,7 @@ Create a Full Stack Web Application with the following features:
 - [x] Protected API keys in Node with environment variables
 - [x] Polished front end/UI
 - [x] Meet good-quality coding standards (indentation, scoping, naming, etc.)
-- [x] Deployed using Heroku (with data)
-
-## The development process
-
-In order to accomplish the challenge, the following steps were done:
-
-* Research on the different API's used.
-* Define the purpose, and concept of the application before starting to code.
-* Work through what needed to be done first.
-* Create sketches for each web page.
-* Define the routes, requests and responses structure.
-* Integrate a full stack application.
-
+- [x] Deployed using Heroku (with data)  
 
 ## Usage
 
