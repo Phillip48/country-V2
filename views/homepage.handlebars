@@ -44,7 +44,10 @@
     <div class="dis-colmun" id="country-flag">
       <h3>Country Flag:</h3>
       <div class="country-flag" id="country-flag-div">
+        {{#if userCountrySearch.country_img}}
         <img class="display-none" src="{{userCountrySearch.country_img}}" alt="Flag img">
+        {{else}}
+        {{/if}}
       </div>
     </div>
 
@@ -64,7 +67,9 @@
 
     <div class="country-info">
       <h3>Country Information:</h3>
-      <div id="display-country-info">
+      <div id="display-country-info" class="new-country-info">
+        <div class="new-country-text">
+          {{#if userCountrySearch.country_title}}
         <h3>{{userCountrySearch.country_title}}</h3>
         <p>The capital of <b>{{userCountrySearch.country_title}}</b> is: <b>{{userCountrySearch.capital}}</b>.</p>
         <p><b>{{userCountrySearch.country_title}}'s</b> region is: <b>{{userCountrySearch.region}}</b>.</p>
@@ -73,7 +78,25 @@
         <p>In<b> {{userCountrySearch.country_title}}</b> they speak: <b>{{userCountrySearch.languages}}</b>.</p>
         <p><b>{{userCountrySearch.country_title}}'s</b> borders are: <b>{{userCountrySearch.borders}}</b>.</p>
         <p>In <b>{{userCountrySearch.country_title}}</b> they drive on the <b>{{userCountrySearch.sideofroad}}</b> side of the road.</p>
+        {{else}}
+        <p>Make a search to see country info!</p>
+        {{/if}}
+        </div> 
       </div>
     </div>
   </div>
+  {{#if loggedIn}}
+    <div class="new-div-btn-country">
+      <button class="btn btn-lg btn-dark" id="add-favorite-button">Add to favorite</button>
+      <div class="div-padding"></div>
+      <button class="btn btn-lg btn-dark" id="">Leave a Review</button>
+    </div>
+    {{else}}
+    <div class="new-div-btn-country">
+      <h3 class="please-login">To add to favorites or leave a review please Log In or SignUp!</h3>
+    </div>
+  {{/if}}
 </main>
+<script src="../public/js/favorites.js"></script>
+<script src="../public/js/modalReview.js"></script>
+<script src="../public/js/review.js"></script>
