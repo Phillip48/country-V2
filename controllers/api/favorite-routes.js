@@ -5,16 +5,16 @@ const { UserCountry, Country } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        console.log('finding movie')
-        console.log(req.body.favoriteMovieReform)
+        // console.log('finding country')
+        console.log(req.body.favoriteCountryReform)
         const countryData = await Movie.findOne({
-            where: { movie_title: req.body.favoriteMovieReform }
+            where: { movie_title: req.body.favoriteCountryReform }
         })
         console.log(countryData)
         let favoriteObject = {
             user_id: req.session.userId,
             country_id: countryData.id,
-            has_visited: false
+            has_visited: true
         }
         console.log(favoriteObject)
         const followData = await UserCountry.create(favoriteObject);

@@ -9,7 +9,11 @@
 
         <div class="username-text">
             <div>
-                <h3>UserName12</h3>
+                {{#if differentUser}}
+                <button class="button is-dark" id="follow-button">Follow</button>
+                {{else}}
+                <h3>{{username}}</h3>
+                {{/if}}
             </div>
             <div>
                 <p>Reviews: 34</p>
@@ -19,28 +23,35 @@
         <!-- Following -->
         <div class="following-class-text">
             <h3>Following:</h3>
-            <h6>user5</h6>
-            <h6>user6</h6>
-            <h6>user8</h6>
+            {{#each followee as |follow|}}
+            <a href='/username/{{username}}'>
+                <p class="title">{{username}}</p>
+            </a>
+            {{/each}}
         </div>
-
-
-        <!-- <div>
-          <button class="btn btn-lg btn-primary follow-btn">Follow</button> -->
-        <!-- <button class="btn btn-lg btn-primary">Unfollow</button> -->
-        <!-- </div> -->
     </div>
     <hr />
-
     <!-- Favorites -->
     <div class="favorite-countries">
         <h3>Favorites</h3>
-
+        {{#each countries as |favorite|}}
+        <div class="favorite-countries">
+            <h2 class="favorite-countries-text">{{country_title}}</h2>
+            <a href='/search/{{country_title}}'><img src="{{country_img}}" class="img-small-img"
+                alt="similar countries" /></a>
+        </div>
+        {{/each}}
     </div>
 
     <!-- Reviews -->
     <div class="user-review-countries">
         <h3>Reviews</h3>
-
+        {{#each reviews as |review|}}
+        <h1>{{country.country_title}}</h1>
+        <a href="/username/{{user.username}}" id="reviewer-link">
+            <h3>Reviewed By {{user.username}} ⭐{{review.underscoreLikes}}</h3>
+        </a>
+        <p>{{content}}</p>
+        {{/each}}
 
     </div>

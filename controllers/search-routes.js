@@ -107,7 +107,7 @@ router.get('/:countryTitle', (req, res) => {
                 const userId = req.session.userId
                 console.log('found entry')
                 //  took out googleMapsBox from this render
-                res.render('homepage', { userCountrySearch, countryID, reviews, userId, googlemapsLink});
+                res.render('homepage', { userCountrySearch, countryID, reviews, userId, googlemapsLink, loggedIn: req.session.loggedIn});
             } else {
                 // If there is no data of this country in the database then it will take the data from the API and create it to the database
                 console.log('no entry found')
