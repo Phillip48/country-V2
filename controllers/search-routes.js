@@ -8,6 +8,7 @@ const { Country, Review, User } = require('../models');
 //'/search' endpoint for user search
 // Router to get the movie search
 router.get('/:countryTitle', (req, res) => {
+    const apiKey = process.env.API_KEY;
 
 
     const googleMaps = `https://www.google.com/maps/embed/v1/place?key=AIzaSyB4ei3CuVhlWhedmkq1KWjebDbfLid1j3w&q=${req.params.countryTitle}`;
@@ -85,7 +86,7 @@ router.get('/:countryTitle', (req, res) => {
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB4ei3CuVhlWhedmkq1KWjebDbfLid1j3w
+                src="https://www.google.com/maps/embed/v1/place?key=${apiKey}
                 &q=${req.params.countryTitle}">
                 </iframe>
             </div>`;
