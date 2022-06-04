@@ -13,7 +13,7 @@
 Who doesn't wanna travel the world? Taking my personal P1 project and redoing it with what I learned in P2.  . It works by using REST Countries API and the Google Maps API. This app allows you to see where a country is located and some information about the country. Not to mention follow other users and review the countries youve visited... and of course have a favorites list.   
 This is still a work in progress and not finished  
 Version 1 was disabled...  
-[Version 2 live link]()   
+[Version 2 live link](https://infinite-stream-24807.herokuapp.com/)   
 
 ## The Project
 
